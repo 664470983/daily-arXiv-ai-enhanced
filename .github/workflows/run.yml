@@ -105,7 +105,7 @@ jobs:
         shuf "data/${today}.jsonl" > /tmp/shuffled.jsonl
         head -n 40 /tmp/shuffled.jsonl > "data/${today}.jsonl"
         wc -l "data/${today}.jsonl"
-                        - name: AI Enhancement Processing
+    - name: AI Enhancement Processing
       if: steps.dedup_check.outputs.has_new_content == 'true'
       run: |
         source .venv/bin/activate
