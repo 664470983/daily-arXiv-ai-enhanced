@@ -7,12 +7,14 @@
  * to enable fetching data from the data branch
  */
 
+
 const DATA_CONFIG = {
     /**
      * GitHub repository owner (username)
      * This will be replaced during GitHub Actions workflow execution
      */
-    repoOwner: 'dw-dengwei',
+    repoOwner: '664470983',
+
 
     /**
      * GitHub repository name
@@ -20,11 +22,13 @@ const DATA_CONFIG = {
      */
     repoName: 'daily-arXiv-ai-enhanced',
 
+
     /**
      * Data branch name
      * Default: 'data'
      */
     dataBranch: 'data',
+
 
     /**
      * Get the base URL for raw GitHub content from data branch
@@ -33,6 +37,7 @@ const DATA_CONFIG = {
     getDataBaseUrl: function() {
         return `https://raw.githubusercontent.com/${this.repoOwner}/${this.repoName}/${this.dataBranch}`;
     },
+
 
     /**
      * Get the full URL for a data file
@@ -43,4 +48,3 @@ const DATA_CONFIG = {
         return `${this.getDataBaseUrl()}/${filePath}`;
     }
 };
-
