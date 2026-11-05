@@ -97,7 +97,15 @@ jobs:
                 ;;
         esac
         
-    - name: AI Enhancement Processing
+    - name: Limit daily papers for free tier
+      if: steps.dedup_check.outputs.has_new_content == 'true'
+      run: |
+        today=${{ steps.crawl_step.outputs.crawl_date }}
+        echo "Limiting today's papers to 40 for the free tier"
+        shuf "data/${today}.jsonl" > /tmp/shuffled.jsonl
+        head -n 40 /tmp/shuffled.jsonl > "data/${today}.jsonl"
+        wc -l "data/${today}.jsonl"
+                        - name: AI Enhancement Processing
       if: steps.dedup_check.outputs.has_new_content == 'true'
       run: |
         source .venv/bin/activate
